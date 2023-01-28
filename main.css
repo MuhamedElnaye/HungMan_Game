@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Tahoma, Arial;
+}
+:root {
+  --thedraw-color: #222;
+  --the-width-of-draw: 4px;
+}
+.container {
+  margin: 20px auto;
+  width: 1000px;
+}
+.row {
+  display: flex;
+}
+hr {
+  border: 1px solid #eee;
+}
+.game-info {
+  display: flex;
+}
+.game-info .game-name {
+  flex: 1;
+}
+.game-info .catogery {
+  flex: 1;
+  text-align: right;
+}
+.game-info .catogery span {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #e91e63;
+}
+.hungman-draw {
+  flex: 1;
+  background-color: #f8f8f8;
+  padding: 20px;
+  height: 324px;
+  /* display: none; */
+}
+.hungman-draw .the-draw {
+  width: 60px;
+  height: 280px;
+  position: relative;
+  border-bottom: var(--the-width-of-draw) solid var(--thedraw-color);
+  margin: auto;
+  left: -80px;
+  display: none;
+}
+.hungman-draw .the-stand {
+  position: absolute;
+  width: var(--the-width-of-draw);
+  background-color: var(--thedraw-color);
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.hungman-draw .the-hung {
+  display: none;
+}
+.hungman-draw .the-hung::before {
+  content: "";
+  position: absolute;
+  height: var(--the-width-of-draw);
+  background-color: var(--thedraw-color);
+  width: 120px;
+  left: 30px;
+  top: 12px;
+}
+.hungman-draw .the-hung::after {
+  content: "";
+  position: absolute;
+  width: var(--the-width-of-draw);
+  height: 32px;
+  background-color: var(--thedraw-color);
+  top: 12px;
+  right: -90px;
+}
+.hungman-draw .the-rope {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  border: var(--the-width-of-draw) dashed var(--thedraw-color);
+  top: 40px;
+  left: 120px;
+  display: none;
+}
+.hungman-draw .the-man .head {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  border: var(--the-width-of-draw) solid var(--thedraw-color);
+  top: 50px;
+  left: 131px;
+  display: none;
+}
+.hungman-draw .the-man .head::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: var(--the-width-of-draw);
+  background-color: var(--thedraw-color);
+  top: 35px;
+  left: 15px;
+}
+.hungman-draw .the-man .body {
+  width: 55px;
+  height: 70px;
+  position: absolute;
+  border: var(--the-width-of-draw) solid var(--thedraw-color);
+  top: 105px;
+  left: 124px;
+  border-radius: 8px;
+  display: none;
+}
+.hungman-draw .the-man .hands {
+  display: none;
+}
+.hungman-draw .the-man .hands::before,
+.hungman-draw .the-man .hands::after {
+  content: "";
+  position: absolute;
+  height: 47px;
+  width: var(--the-width-of-draw);
+  background-color: var(--thedraw-color);
+  border-radius: 24px;
+}
+.hungman-draw .the-man .hands::after {
+  top: 105px;
+  left: 185px;
+  transform: rotate(-30deg);
+}
+.hungman-draw .the-man .hands::before {
+  top: 104px;
+  left: 114px;
+  transform: rotate(30deg);
+}
+.hungman-draw .the-man .legs {
+  display: none;
+}
+.hungman-draw .the-man .legs::before,
+.hungman-draw .the-man .legs::after {
+  content: "";
+  position: absolute;
+  height: 50px;
+  width: var(--the-width-of-draw);
+  background-color: var(--thedraw-color);
+  border-radius: 5px;
+  top: 171px;
+}
+.hungman-draw .the-man .legs::before {
+  left: 139px;
+}
+.hungman-draw .the-man .legs::after {
+  left: 161px;
+}
+.hungman-draw.error-1 .the-draw {
+  display: block;
+}
+.hungman-draw.error-2 .the-stand {
+  display: block;
+}
+.hungman-draw.error-3 .the-hung {
+  display: block;
+}
+.hungman-draw.error-4 .the-rope {
+  display: block;
+}
+.hungman-draw.error-5 .head {
+  display: block;
+}
+.hungman-draw.error-6 .body {
+  display: block;
+}
+.hungman-draw.error-7 .hands {
+  display: block;
+}
+.hungman-draw.error-8 .legs {
+  display: block;
+}
+.letters {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+.letters.finshed {
+  pointer-events: none;
+}
+.letters.successed {
+  pointer-events: none;
+}
+
+.letters .letter-box {
+  display: inline-grid;
+  background-color: #009688;
+  color: white;
+  cursor: pointer;
+  height: 55px;
+  width: 55px;
+  margin: 20px 20px 0 0;
+  font-weight: bold;
+  line-height: 60px;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.letters .clicked {
+  background-color: #25379e;
+  opacity: 0.2;
+  pointer-events: none;
+}
+.letters-guess {
+  margin: 20px auto;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  min-height: 110px;
+  padding: 20px;
+}
+.letters-guess span {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px;
+  border-bottom: 3px solid #009688;
+  border-radius: 10px;
+  margin-right: 15px;
+  text-align: center;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #fdfdfd;
+}
+.letters-guess .have-space {
+  background: none;
+  border-bottom: none;
+  position: relative;
+}
+
+.letters-guess .have-space::before {
+  content: "";
+  width: 26px;
+  position: absolute;
+  height: 5px;
+  border-radius: 8px;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.popup {
+  position: fixed;
+  background-color: rgb(44, 44, 90);
+  color: white;
+  width: 80%;
+  top: 10%;
+  left: 10%;
+  padding: 100px 20px;
+  text-align: center;
+  font-size: 40px;
+  border-radius: 15px;
+  border: 2px solid green;
+}
+.popupsucss {
+  position: fixed;
+  background-color: rgb(44, 44, 90);
+  color: white;
+  width: 80%;
+  top: 10%;
+  left: 10%;
+  padding: 100px 20px;
+  text-align: center;
+  font-size: 40px;
+  border-radius: 15px;
+  border: 2px solid green;
+}
